@@ -1,0 +1,41 @@
+/predict/(input)swagger: '2.0'
+info:
+  version: '1.0'
+  title: 'Spec_file '
+  description: 'A service to predict heart failure in patients using swagger-2.0'
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    name: "REST Service"
+  license:
+    name: "Apache"
+host: "virtserver.swaggerhub.com"
+basePath: "/E2223/specification/1.0"
+schemes:
+ - https
+ - http
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  /predict/(input):
+    get:
+      tags:
+        - SPECFILE
+      operationId: heart_failure.predict
+      description: "Returns prediction of mortality due to heart failure"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Prediction"
+          schema:
+            $ref: "#/definitions/prediction"
+definitions:
+  prediction:
+    type: "object"
+    required:
+      - "model"
+    properties:
+      model:
+        type: "string"
