@@ -1,41 +1,38 @@
-/predict/(input)swagger: '2.0'
+openapi: 3.0.0
 info:
-  version: '1.0'
-  title: 'Spec_file '
-  description: 'A service to predict heart failure in patients using swagger-2.0'
-  termsOfService: "http://swagger.io/terms/"
+  version: 0.0-oas3
+  title: specfile
+  description: >-
+    A simple service to use heart failure predicter
+  termsOfService: 'http://swagger.io/terms/'
   contact:
-    name: "REST Service"
+    name: Cloudmesh REST Service Example
   license:
-    name: "Apache"
-host: "virtserver.swaggerhub.com"
-basePath: "/E2223/specification/1.0"
-schemes:
- - https
- - http
-consumes:
-  - "application/json"
-produces:
-  - "application/json"
+    name: Apache
 paths:
-  /predict/(input):
+  /predict/{array}:
     get:
       tags:
-        - SPECFILE
-      operationId: heart_failure.predict
-      description: "Returns prediction of mortality due to heart failure"
-      produces:
-        - "application/json"
-      responses:
-        "200":
-          description: "Prediction"
+        - PRED
+      operationId: prediction.my_prediction
+      description: Returns prediction
+      parameters:
+        - in: path
+          name: array
+          required: true
           schema:
-            $ref: "#/definitions/prediction"
-definitions:
-  prediction:
-    type: "object"
-    required:
-      - "model"
-    properties:
-      model:
-        type: "string"
+            type: array
+            items:
+              type: number
+            minItems: 1
+          style: simple
+          explode: true
+        - in: query
+          name: metadata
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: 'Heart Failure info, or add more text'
+servers:
+  - url: 'http://localhost:8080/engr-222'
