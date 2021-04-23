@@ -20,5 +20,6 @@ def my_prediction(array):
     name_str = json.dumps(name)
     return name_str
 
-print(my_prediction([50, 0, 100, 0, 30, 0, 204000, 1.4, 130, 0, 1, 10]))
+#print(my_prediction([50, 0, 100, 0, 30, 0, 204000, 1.4, 130, 0, 1, 10]))
 #http://localhost:8080/engr-222/predict/50, 0, 100, 0, 30, 0, 204000, 1.4, 130, 0, 1, 10
+
